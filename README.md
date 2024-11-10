@@ -4,11 +4,13 @@
 
 ## Glossary
 
-# What?
+## What?
 
-# Why?
+## Why?
 
-# How?
+## How?
+
+## Technology stack
 
 ## Process
 
@@ -29,4 +31,5 @@ define grammar
 then  draw one automata per word
 then draw the automata for the whole language, with a stack for keeping track of the indentation
 then write the parser: shell script that returns true/false with a huge regexp?
+Maybe make a regexp that works on one line and parse each line? (for easier indentation handling).
 
