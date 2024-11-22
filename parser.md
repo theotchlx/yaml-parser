@@ -43,6 +43,11 @@ The issue is, my script sees this "parent element" as a "parent line", and once 
 After some researches, I now realize I should have restructured the YAML file into a tree of elements, as to preserve their hierarchical relationship. I did not have enough time to design or make this, but I know this is part of some "lexing" or "parsing" or "tokenization": compilers and other tools see the analysed text as a tree, and I now have a little idea of why, and why some things can't (in a simple way) be parsed line-wise.
 I am getting way ahead of myself here, but maybe even identation could have been represented hierarchically in the tree. However this may be an incorrect solution, since the stack can handle it already.
 
+So I would have needed to design the tree data structure to use, make a function to transform the YAML file into the tree, with every hierarchical information between elements accessible, and then use my current functions that implement the grammar to validate each element of the tree.
+
+This would have been the only correct complete solution. It would have still been possible to validate YAML using line-wise parsing using a very "stateful" approach : with lots of simpler data structures such as booleans, stacks or queues to "remember" the hierarchical state or "context" of the current line: are we in the context of a sequence? Of a mapping? ...
+But manipulating this many data structure would make the code terribly complex, inefficient and unreadable.
+
 ## Ideas for further implementations
 
 I wonder if it is possible to implement a validation script using one regular expression.
