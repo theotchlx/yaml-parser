@@ -32,8 +32,8 @@ scalar               = plain_scalar | quoted_scalar | block_scalar;        # A s
 plain_scalar         = string;                                             # Unquoted string.
 quoted_scalar        = '"' string '"' | "'" string "'";                    # Double-quoted is to allow escape characters (\t, \\...), single-quoted do not.
 block_scalar         = block_folded_scalar | block_literal_scalar;         # Folded is >, literal is |. They are followed by indented content.
-block_folded_scalar  = ">" [ newline ] indented_block;                     # "Folded": newlines are folded into spaces.
-block_literal_scalar = "|" [ newline ] indented_block;                     # "Literal": newlines are preserved.
+block_folded_scalar  = ">" [ newline ] line_block;                         # "Folded": newlines are folded into spaces.
+block_literal_scalar = "|" [ newline ] line_block;                         # "Literal": newlines are preserved.
 
 collection           = block_mapping | block_sequence;                     # Collections are maps or sequences. They represent arrays/lists of more or less complex values.
 block_mapping        = { mapping_entry };                                  # Collection of key-value pairs.
@@ -46,8 +46,8 @@ sequence_entry       = "-" ( " " scalar | newline indentation node );      # A s
 comment              = "#" string newline;                                 # Comments are ignored... Even when they start in the middle of a line.
 string               = { character };
 character            = any UTF-8 character excluding newline;
-indented_block       = { indented_line };
-indented_line        = indentation string newline;
-indentation          = { " " };                                            # An indent is one or more spaces.
+line_block           = { block_line };
+block_line           = indentation string newline;
+indentation          = { " " };                                            # An indent is zero or more spaces.
 newline              = "\n" | "\r\n";                                      # Historically, old Macintosh OSes used a single \r (carriage return) as newline, but the more Unix-compliant OS X has switched to \n for over 20 years now.
 ```
