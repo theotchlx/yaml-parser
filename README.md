@@ -46,7 +46,3 @@ I started by defining what was needed to make the YAML parser:
 - [Crafting Interpreters](https://craftinginterpreters.com/): not as related, but it's an interesting resource.
 - [ASCII Flow](https://asciiflow.com/) as well as [Mermaid](https://mermaid.js.org/) to draw the automaton in a portable manner.
 - [YAMLLint](https://www.yamllint.com/) to help me test my scripts and visualize easily what conforms to YAML standards.
-
-## Licence
-
-This project is made open source under the MIT licence.
