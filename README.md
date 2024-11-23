@@ -47,12 +47,6 @@ I started by defining what was needed to make the YAML parser:
 - [ASCII Flow](https://asciiflow.com/) as well as [Mermaid](https://mermaid.js.org/) to draw the automaton in a portable manner.
 - [YAMLLint](https://www.yamllint.com/) to help me test my scripts and visualize easily what conforms to YAML standards.
 
-define grammar
-then  draw one automaton per word
-then draw the automaton for the whole language, with a stack for keeping track of the indentation
-then write the parser: shell script that returns true/false with a huge regexp?
-Maybe make a regexp that works on one line and parse each line? (for easier indentation handling).
-
 ## Licence
 
 This project is made open source under the MIT licence.
