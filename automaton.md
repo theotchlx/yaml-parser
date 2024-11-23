@@ -78,8 +78,8 @@ digraph YAML_automaton {
 
 ## In PNG format
 
-[Automaton](automaton.png)
+![Automaton](automaton.png)
 
 ## In SVG format
 
-[Automaton](automaton.svg)
+![Automaton](automaton.svg)
