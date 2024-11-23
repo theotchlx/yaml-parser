@@ -1,0 +1,83 @@
+# Document YAML complexe "bien gras" généré par IA
+---
+config:
+   environment: production
+  database:
+    type: postgresql
+    host: localhost
+    port: 5432
+    credentials:
+      username: admin
+      password: "supersecurepassword"
+  features:
+    - name: featureA
+      enabled: true
+    - name: featureB
+      enabled: false
+      notes: |
+        This feature is disabled by default.
+        Requires manual activation.
+    - name: featureC
+      enabled: true
+      settings:
+        retries: 3
+        timeout: 30
+        modes:
+          - "fast"
+          - "safe"
+          - "balanced"
+
+# Liste imbriquée avec plusieurs niveaux
+users:
+  - id: 1
+    name: Alice
+    roles:
+      - admin
+      - editor
+  - id: 2
+    name: Bob
+    roles:
+      - viewer
+      - editor
+      - permissions:
+        - read
+        - write
+        - delete
+  - id: 3
+    name: Charlie
+    preferences:
+      theme: dark
+      notifications: false
+
+# Section avec des scalaires bloqués
+logs: |
+  This is a block scalar.
+  It supports multiple lines.
+  And it preserves newlines.
+
+metadata:
+  created_at: "2024-11-23T10:00:00Z"
+  updated_at: null
+  tags:
+    - "complex"
+    - "test"
+    - "example"
+
+# Liste mixte avec objets et scalaires
+tasks:
+  - "Simple task"
+  - name: "Complex task"
+    priority: high
+    subtasks:
+      - "Subtask 1"
+      - name: "Subtask 2"
+        due_date: "2024-12-01"
+        notes: >
+          Multiline note for this subtask.
+          It has an inline scalar block.
+  - "Another simple task"
+
+...
+---
+# DOcument null (vide)
+...

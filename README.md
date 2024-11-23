@@ -36,7 +36,7 @@ I started by defining what was needed to make the YAML parser:
 
 - The YAML language. (I removed the file since it was not interesting compared to the grammar)
 - The YAML grammar, to define the set of valid words in the language. I made the grammar in Backus-Naur form (BNF), and later rewrote it in Extended Backus-Naur form.
-- The YAML automaton from the grammar, to check if a word is valid in the language and with a stack to take indentation in account. I tried using [ASCIIFlow](https://asciiflow.com/) and [Mermaid](https://mermaid.js.org/) to draw the automaton, but I finally decided on using the [DOT](https://graphviz.org/doc/info/lang.html) graph visualization software. I also could've used Figma/Figjam, Excalidraw, or tools especially made to draw automata.
+- The YAML automaton from the grammar, to check if a word is valid in the language and with a stack to take indentation in account. I tried using [ASCIIFlow](https://asciiflow.com/) and [Mermaid](https://mermaid.js.org/) to draw the automaton, but I finally decided on using the [DOT](https://graphviz.org/doc/info/lang.html) graph visualization language. I also could've used Figma/Figjam, Excalidraw, which are tools not especially made to draw automata.
 - I tried writing regular expressions from the grammars, to check if a set of words is valid YAML and help design the parser programs, but I ended up not using them.
 - The YAML parser/validation script, to check if a file is a valid YAML file or not.
 

@@ -25,16 +25,31 @@ class YAMLValidator:
         # Determine current line's indentation level (0 if the line is just spaces/indent).
         indent_level = len(line.rstrip()) - len(line.strip())
 
-        # Check if indentation level is valid (must not decrease inappropriately).
-        while self.stack and self.stack[-1] > indent_level:
-            self.stack.pop()  # Close levels as needed.
+        ### Indentation consistency validation ###
 
-        # Push the indentation to the stack if the indentation increases instead.
-        if not self.stack or self.stack[-1] < indent_level:
-            self.stack.append(indent_level)
+        # Check if the decrease in indentation is valid.
+        if self.stack and indent_level < self.stack[-1]:
+            while self.stack and self.stack[-1] > indent_level:
+                self.stack.pop()  # Pop until the stack is at the right level.
+            # indentation invalid if it doesn"t match a previous level.
+            if self.stack and self.stack[-1] != indent_level:
+                return False
+
+        # Check if the increase in indentation is valid.
+
+        # These check does not work because the stack automaton cannot remember the context: if we are in a mapping, a sequence, or no context.
+        # It cannot do this because it parses line by line.
+        # I had implemented it with booleans to remember the context, but then it was not a stack automaton.
+        # Correct solution would have been to parse a tree of the YAML instead of line by line.
+
+        if not self.stack or indent_level > self.stack[-1]:
+            # Indentation can only increase if the previous line was valid for nesting.
+            #if not parent_line.startswith("-") and not parent_line.endswith(":"):
+            #    return False
+            self.stack.append(indent_level)  # Add new indentation level to the stack.
+        ### End indentation consistency validation ###
 
         # Validate the line using the grammar rules functions
-
         # If line starts a dash (sequence entry) or is key-colon-value (mapping entry), validate:
         if stripped.startswith("-"):
             if not self.is_sequence_entry(stripped):
